@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { icon } from "../constants";
-import { loginUserStart } from "../slice/auth";
+import AuthService from "../service/auth";
+import { signUserFail, signUserStart, signUserSuccess } from "../slice/auth";
 import { Input } from "../ui";
 
 const Login = () => {
@@ -10,11 +11,17 @@ const Login = () => {
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.auth);
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    dispatch(loginUserStart());
+    dispatch(signUserStart());
+    const user = { email, password };
+    try {
+      const response = await AuthService.userLogin(user);
+      dispatch(signUserSuccess(response.user));
+    } catch (error) {
+      dispatch(signUserFail(error.response.data.errors));
+    }
   };
-  console.log(isLoading);
   return (
     <div className="text-center">
       <main className="form-signin w-25 m-auto">
