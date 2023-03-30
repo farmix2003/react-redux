@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { icon } from "../constants";
 import { signUserFail, signUserStart, signUserSuccess } from "../slice/auth";
 import { Input } from "../ui";
 import { ValidationError } from ".";
 import AuthService from "../service/auth";
+import { useNavigate } from "react-router-dom";
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { isLoading } = useSelector((state) => state.auth);
+  const { isLoading, loggedIn } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -22,10 +24,16 @@ const Register = () => {
       setName("");
       setEmail("");
       setPassword("");
+      navigate("/");
     } catch (error) {
       dispatch(signUserFail(error.response.data.errors));
     }
   };
+  useEffect(() => {
+    if (loggedIn) {
+      navigate("/");
+    }
+  }, []);
   return (
     <div className="text-center">
       <main className="form-signin w-25 m-auto">
