@@ -1,4 +1,4 @@
-const Input = ({ label, type = "text", state, setState }) => {
+const Input = ({ label, type, state, setState }) => {
   return (
     <div className="form-floating mb-1">
       <input

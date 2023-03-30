@@ -34,12 +34,17 @@ const Register = () => {
           <h1 className="h3 mb-3 fw-normal">Please sign up</h1>
           <ValidationError />
           <Input
-            type={"email"}
+            type={"text"}
+            label={"Username"}
+            state={name}
+            setState={setName}
+          />
+          <Input
             label={"Email address"}
+            type={"email"}
             state={email}
             setState={setEmail}
           />
-          <Input label={"Username"} state={name} setState={setName} />
           <Input
             type={"password"}
             label={"Password"}
