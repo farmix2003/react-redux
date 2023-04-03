@@ -1,9 +1,18 @@
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { logo } from "../constants";
+import { removeItem } from "../helpers/persitance-storage";
+import { logOutUser } from "../slice/auth";
 
 const Navabr = () => {
   const { loggedIn, user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const logOut = () => {
+    dispatch(logOutUser());
+    removeItem("token");
+    navigate("/login");
+  };
   return (
     <div className="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom container pt-3">
       <Link to={"/"}>
@@ -15,7 +24,9 @@ const Navabr = () => {
             <p className="me-2 py-1 m-0 link-body-emphasis text-decoration-noneo">
               {user.username}
             </p>
-            <button className="btn btn-outline-danger">Logout</button>
+            <button className="btn btn-outline-danger" onClick={logOut}>
+              Logout
+            </button>
           </>
         ) : (
           <>

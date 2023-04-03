@@ -12,3 +12,10 @@ export const getItem = (key) => {
     console.log("error getting data");
   }
 };
+export const removeItem = (key) => {
+  try {
+    return localStorage.removeItem(key);
+  } catch (error) {
+    console.log(error);
+  }
+};
