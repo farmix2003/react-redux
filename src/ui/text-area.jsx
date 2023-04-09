@@ -1,8 +1,10 @@
 const TextArea = ({ label, state, setState, height = "100px" }) => {
   return (
-    <div class="form-floating">
+    <div className="form-floating">
       <textarea
-        class="form-control"
+        value={state}
+        onChange={(e) => setState(e.target.value)}
+        className="form-control"
         placeholder={label}
         id="floatingTextarea2"
         style={{ height: height }}

@@ -12,12 +12,7 @@ import {
 import { getItem } from "./helpers/persitance-storage";
 import AuthService from "./service/auth";
 import { signUserSuccess } from "./slice/auth";
-import ArticleService from "./service/article";
-import {
-  getArticleSuccess,
-  getArticlesError,
-  getArticlesStart,
-} from "./slice/article";
+
 const App = () => {
   const dispatch = useDispatch();
 
@@ -29,22 +24,12 @@ const App = () => {
       console.log(error);
     }
   };
-  const getArticles = async () => {
-    dispatch(getArticlesStart());
-    try {
-      const response = await ArticleService.getArticles();
-      console.log(response);
-      dispatch(getArticleSuccess(response.articles));
-    } catch (error) {
-      dispatch(getArticlesError());
-    }
-  };
+
   useEffect(() => {
     const token = getItem("token");
     if (token) {
       getUser();
     }
-    getArticles();
   }, []);
 
   return (
