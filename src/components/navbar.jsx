@@ -21,8 +21,14 @@ const Navabr = () => {
       <nav className="d-inline-flex mt-2 mt-md-0 ms-md-auto">
         {loggedIn ? (
           <>
-            <p className="me-2 py-1 m-0 link-body-emphasis text-decoration-noneo">
+            <p className="me-2 py-2 m-0 link-body-emphasis text-decoration-none">
               {user.username}
+              <Link
+                className="me-2 mx-4 py-2 m-2 link-body-emphasis text-decoration-none "
+                to={"/create-article"}
+              >
+                Create
+              </Link>
             </p>
             <button className="btn btn-outline-danger" onClick={logOut}>
               Logout
