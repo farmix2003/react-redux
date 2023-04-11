@@ -8,6 +8,7 @@ import {
   Navbar,
   ArticleDetail,
   CreateArtcile,
+  EditArticle,
 } from "./components";
 import { getItem } from "./helpers/persitance-storage";
 import AuthService from "./service/auth";
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/article/:slug" element={<ArticleDetail />} />
           <Route path="/create-article" element={<CreateArtcile />} />
+          <Route path="/edit-article/:slug" element={<EditArticle />} />
         </Routes>
       </div>
     </div>
