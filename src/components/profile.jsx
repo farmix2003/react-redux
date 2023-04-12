@@ -30,7 +30,6 @@ function Profile() {
       <ListGroup className="list-group-flush">
         <ListGroup.Item>{user?.username}</ListGroup.Item>
         <ListGroup.Item>{user?.email}</ListGroup.Item>
-        <ListGroup.Item>Born in 25.08.2003</ListGroup.Item>
       </ListGroup>
       <Card.Body></Card.Body>
     </Card>
