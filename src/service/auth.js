@@ -13,5 +13,9 @@ const AuthService = {
     const { data } = await axios.get("/user");
     return data;
   },
+  async getUserDetail(user) {
+    const { data } = await axios.get("/user");
+    return data;
+  },
 };
 export default AuthService;

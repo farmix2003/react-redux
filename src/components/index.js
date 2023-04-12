@@ -8,3 +8,4 @@ export { default as CreateArtcile } from "../components/create-article";
 export { default as ArticleForm } from "./article-form";
 export { default as EditArticle } from "./edit-article";
 export { default as Profile } from "./profile";
+export { default as ArticleCard } from "./article-card";
