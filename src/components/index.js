@@ -7,3 +7,4 @@ export { default as ArticleDetail } from "../components/article-detail";
 export { default as CreateArtcile } from "../components/create-article";
 export { default as ArticleForm } from "./article-form";
 export { default as EditArticle } from "./edit-article";
+export { default as Profile } from "./profile";

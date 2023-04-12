@@ -9,6 +9,7 @@ import {
   ArticleDetail,
   CreateArtcile,
   EditArticle,
+  Profile,
 } from "./components";
 import { getItem } from "./helpers/persitance-storage";
 import AuthService from "./service/auth";
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/article/:slug" element={<ArticleDetail />} />
           <Route path="/create-article" element={<CreateArtcile />} />
           <Route path="/edit-article/:slug" element={<EditArticle />} />
+          <Route path="/profile/:slug" element={<Profile />} />
         </Routes>
       </div>
     </div>
